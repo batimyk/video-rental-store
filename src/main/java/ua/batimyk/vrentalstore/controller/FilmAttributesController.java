@@ -56,4 +56,9 @@ public class FilmAttributesController {
         return new ResponseEntity<>(actors, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    public HttpStatus getConnStatus() {
+
+        return HttpStatus.OK;
+    }
 }

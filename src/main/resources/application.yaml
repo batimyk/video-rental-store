@@ -1,0 +1,30 @@
+entitymanager.packagesToScan: ua.batimyk.vrentalstore
+
+database:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://aa1eynuelxcnr4a.c7reurckgtex.eu-central-1.rds.amazonaws.com:3306/sakila
+  username: sakila
+  password: sakila
+
+hibernate:
+  dialect: org.hibernate.dialect.MySQL5Dialect
+  show_sql: true
+  hbm2ddl.auto: validate
+
+facebook:
+  client:
+    clientId: 233668646673605
+    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    org.hibernate: ERROR
+    org.springframework.security: DEBUG
