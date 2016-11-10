@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,12 +8,28 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width" />
     <base href="/" />
-    <link rel="stylesheet" type="text/css"
-          href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+
+      table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #ffffff;
+      }
+    </style>
 </head>
+
 <body ng-app="app" ng-controller="home as home">
 <div class="container" ng-show="!home.authenticated">
     <h1>Video Rental Storage</h1>
@@ -21,37 +38,51 @@
     </div>
 </div>
 <div class="container" ng-show="home.authenticated">
+    <div class="well">
+        <h1>Search Video:</h1>
+        <br/>
+        <input ng-model="searchCriteria.filmTitle" placeholder="Film title">
+        <br/>
+        <input ng-model="searchCriteria.filmDescription" placeholder="Film description">
+        <br/>
+        <input ng-model="searchCriteria.filmCategory" placeholder="Film category">
+        <br/>
+        <input ng-model="searchCriteria.actorName" placeholder="Actor">
+        <br/>
+        <input ng-model="searchCriteria.languageName" placeholder="Language">
+        <br/>
+        <button class="btn btn-primary" ng-click="home.reset()">Reset</button>
+        <button class="btn btn-primary" ng-click="home.submit()">Submit</button>
+    </div>
+    <div class="well" ng-show="home.responseCollected">
+        <table>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Category</td>
+            <td>Release year</td>
+            <td>Language</td>
+            <td>Length</td>
+            <td>Rating</td>
+            <td>Actors</td>
+            <tr ng-repeat="x in home.responseData">
+                <td>{{ x.title }}</td>
+                <td>{{ x.description }}</td>
+                <td>{{ x.categoryName }}</td>
+                <td>{{ x.releaseYear}}</td>
+                <td>{{ x.languageName }}</td>
+                <td>{{ x.filmLength }}</td>
+                <td>{{ x.rating }}</td>
+                <td>{{ x.actorNames }}</td>
+            </tr>
+        </table>
+    </div>
     Logged in as: <span ng-bind="home.user"></span>
     <div>
         <button ng-click="home.logout()" class="btn btn-primary">Logout</button>
     </div>
 </div>
 <script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
-<script type="text/javascript">
-		angular
-				.module("app", [])
-				.config(
-						function($httpProvider) {
-							$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-						}).controller("home", function($http, $location) {
-					var self = this;
-					$http.get("/user").success(function(data) {
-						self.user = data.userAuthentication.details.name;
-						self.authenticated = true;
-					}).error(function() {
-						self.user = "N/A";
-						self.authenticated = false;
-					});
-					self.logout = function() {
-						$http.post('logout', {}).success(function() {
-							self.authenticated = false;
-							$location.path("/");
-						}).error(function(data) {
-							console.log("Logout failed")
-							self.authenticated = false;
-						});
-					};
-				});
-	</script>
+<script type="text/javascript" src="js/app.js"></script>
 </body>
+
 </html>

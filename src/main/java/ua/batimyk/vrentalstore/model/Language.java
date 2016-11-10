@@ -18,7 +18,7 @@ public class Language {
     private Byte languageId;
 
     @Column(name = "name", columnDefinition="char(20)")
-    private String name;
+    private String languageName;
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
@@ -31,12 +31,12 @@ public class Language {
         this.languageId = languageId;
     }
 
-    public String getName() {
-        return name;
+    public String getLanguageName() {
+        return languageName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
     }
 
     public Timestamp getLastUpdate() {

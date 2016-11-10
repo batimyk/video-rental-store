@@ -4,11 +4,12 @@
     <groupId>ua.batimyk</groupId>
     <artifactId>rental-store</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <build.profile.id>dev</build.profile.id>
     </properties>
 
     <parent>
@@ -86,6 +87,7 @@
 
     </dependencies>
 
+
     <build>
         <plugins>
             <plugin>
@@ -94,4 +96,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

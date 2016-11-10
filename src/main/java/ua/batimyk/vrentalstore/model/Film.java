@@ -2,6 +2,7 @@ package ua.batimyk.vrentalstore.model;
 
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "film")
@@ -18,6 +19,15 @@ public class Film{
     @Column(name = "description")
     @Type(type="text")
     private String description;
+
+    @Column(name = "release_year")
+    private Date releaseYear;
+
+    @Column(name = "length")
+    private Short filmLength;
+
+    @Column(name = "rating",  columnDefinition="enum('G','PG','PG-13','R','NC-17')")
+    private String rating;
 
     public Film() {
     }
@@ -52,4 +62,27 @@ public class Film{
         this.description = description;
     }
 
+    public Date getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(Date releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public Short getFilmLength() {
+        return filmLength;
+    }
+
+    public void setFilmLength(Short filmLength) {
+        this.filmLength = filmLength;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 }

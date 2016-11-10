@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.batimyk.vrentalstore.model.*;
 import ua.batimyk.vrentalstore.dao.FilmAttributesDAO;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +20,6 @@ import java.util.List;
  * video-rental-store
  */
 @RestController
-@RequestMapping("/list")
 public class FilmAttributesController {
 
     private FilmAttributesDAO filmAttributesDAO;
@@ -26,7 +28,7 @@ public class FilmAttributesController {
         this.filmAttributesDAO = filmAttributesDAO;
     }
 
-    @RequestMapping(value = "/get/categories", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/list/get/categories", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public ResponseEntity<List<Category>> getCategories() {
         List<Category> categories = filmAttributesDAO.getCategories();
 
@@ -36,7 +38,7 @@ public class FilmAttributesController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/get/languages", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/list/get/languages", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public ResponseEntity<List<Language>> getLanguages() {
         List<Language> languages = filmAttributesDAO.getLanguages();
 
@@ -46,7 +48,7 @@ public class FilmAttributesController {
         return new ResponseEntity<>(languages, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/get/actors", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/list/get/actors", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public ResponseEntity<List<Actor>> getActors() {
         List<Actor> actors = filmAttributesDAO.getActors();
 
