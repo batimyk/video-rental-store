@@ -30,9 +30,10 @@ facebook:
 
 logging:
   level:
-    org.springframework.web: ERROR
+    org.springframework.web:   DEBUG
     org.hibernate: DEBUG
     org.springframework.security: ERROR
+
 ---
 spring:
   profiles: prod

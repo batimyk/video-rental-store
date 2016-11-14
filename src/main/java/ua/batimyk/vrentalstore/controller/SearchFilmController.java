@@ -35,7 +35,6 @@ public class SearchFilmController {
 
         List<SearchResult> responseData = searchFilmDAO.getFilms(searchCriteria);
 
-
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
 }

@@ -52,4 +52,14 @@ public class SearchCriteria {
     public void setLanguageName(String languageName) {
         this.languageName = languageName;
     }
+
+    @Override
+    public String toString() {
+        return
+                "filmTitle='" + filmTitle + '\'' +
+                ", filmDescription='" + filmDescription + '\'' +
+                ", filmCategory='" + filmCategory + '\'' +
+                ", actorName='" + actorName + '\'' +
+                ", languageName='" + languageName + '\'';
+    }
 }
