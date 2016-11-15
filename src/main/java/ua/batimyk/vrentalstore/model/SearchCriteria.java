@@ -13,6 +13,9 @@ public class SearchCriteria {
     private String actorName;
     private String languageName;
 
+    public SearchCriteria() {
+    }
+
     public String getFilmTitle() {
         return filmTitle;
     }

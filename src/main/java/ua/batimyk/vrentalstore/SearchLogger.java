@@ -36,7 +36,7 @@ public class SearchLogger {
                     ,returning = "searchResult")
     public void afterSearch(JoinPoint joinPoint, List<SearchResult> searchResult) {
 
-        loggerDAO.save(
+         loggerDAO.save(
                 new SearchLog(
                         userId,
                         Arrays.deepToString(joinPoint.getArgs()),
